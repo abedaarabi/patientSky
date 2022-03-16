@@ -1,0 +1,25 @@
+@import "././global.scss";
+
+.assign-medicine-container {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  p {
+    margin-top: 5rem;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    @include mobile {
+      flex-wrap: nowrap;
+      flex-direction: column;
+    }
+
+    li {
+      padding: 0.5rem;
+      list-style: none;
+    }
+  }
+}

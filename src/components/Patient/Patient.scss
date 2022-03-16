@@ -1,0 +1,43 @@
+@import "././global.scss";
+.patient-container {
+  width: 25%;
+
+  color: aliceblue;
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: 5px;
+  background-color: $blueColor;
+  opacity: 0.8;
+  @include mobile {
+    width: 80%;
+  }
+  .patient-info-container {
+    margin: 0rem 0 1rem -1rem;
+    p {
+      font-size: 18px;
+      padding-left: 1rem;
+      text-decoration: underline;
+    }
+    li {
+      padding-top: 0.4rem;
+      list-style: disc;
+    }
+  }
+  .assigned-medicine {
+    display: flex;
+
+    p {
+      margin-right: 0.5rem;
+      font-weight: lighter;
+    }
+    .arrow {
+      cursor: pointer;
+    }
+  }
+  .patient-btn-container {
+    margin-top: 1rem;
+
+    display: flex;
+    justify-content: space-around;
+  }
+}

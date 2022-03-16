@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import "./App.scss";
+
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AddPatient from "./components/AddPatient/AddPatient";
+import PatientList from "./components/PatientList/PatientList";
+import Navbar from "./components/Navbar/Navbar";
+import { AssignMedicine } from "./components/AssignMedicine/AssignMedicine";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<PatientList />} />
+          <Route path="/add" element={<AddPatient />} />
+          <Route path="/edit/:patientId" element={<AddPatient />} />
+          <Route path="/Assign/:patientId" element={<AssignMedicine />} />
+
+          <Route
+            path="*"
+            element={
+              <main>
+                <p>There's nothing here!</p>
+              </main>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

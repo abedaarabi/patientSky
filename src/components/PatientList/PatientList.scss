@@ -1,0 +1,15 @@
+@import "././global.scss";
+.patient-list-container {
+  display: flex;
+  flex-direction: row;
+
+  flex-wrap: wrap;
+  .noData-msg {
+    margin: 15rem auto;
+  }
+
+  @include mobile {
+    flex-wrap: nowrap;
+    flex-direction: column-reverse;
+  }
+}

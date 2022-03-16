@@ -1,0 +1,12 @@
+$mainColor: #2a363b;
+$grayColor: #e6e7e8;
+$blueColor: #00609c;
+$pinkColor: #c017a2;
+
+$width: 768px;
+
+@mixin mobile {
+  @media (max-width:  #{$width}) {
+    @content;
+  }
+}
