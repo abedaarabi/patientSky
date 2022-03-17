@@ -20,8 +20,10 @@ const medicineSlice = createSlice({
     },
 
     addMedicine: (state, { payload }) => {
+      console.log(payload);
+
       const newPatientRecord = {
-        [payload.patientId]: [...payload.resultIds],
+        [payload.patientId]: [payload.medicineId],
       };
 
       state.assignedMedicine = {

@@ -28,7 +28,7 @@ const Patient = ({
   const { assignedMedicine, medicineTypes } = useSelector(
     ({ medicine }: MedicineInitialState) => medicine
   );
-  console.log(assignedMedicine, medicineTypes, id);
+  // console.log(assignedMedicine, medicineTypes, id);
 
   return (
     <div className="patient-container">

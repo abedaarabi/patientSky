@@ -24,7 +24,7 @@ const PatientList = () => {
   const { assignedMedicine, medicineTypes } = useSelector(
     ({ medicine }: MedicineInitialState) => medicine
   );
-  console.log(assignedMedicine, medicineTypes);
+  // console.log(assignedMedicine, medicineTypes);
 
   // const re = patients.map((p) => {
   //   if (medicineList[p.id]) {

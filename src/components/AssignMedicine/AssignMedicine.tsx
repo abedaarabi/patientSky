@@ -26,15 +26,17 @@ export const AssignMedicine = () => {
     dispatch(filterMedicine(value));
   };
 
-  const assignMedicine = () => {
-    const resultIds = medicineList.map((id) => id.id);
+  const assignMedicine = (medicineId: string) => {
+    // const resultIds = medicineList.map((id) => id.id);
 
-    dispatch(addMedicine({ patientId, resultIds }));
+    dispatch(addMedicine({ patientId, medicineId }));
   };
 
-  // const removeMedicine = (medicineId: string) => {
-  //   dispatch(removeMedicine(medicineId));
-  // };
+  const removeMedicine = (medicineId: string) => {
+    console.log(medicineId);
+
+    // dispatch(removeMedicine(medicineId));
+  };
 
   return (
     <>
@@ -45,21 +47,25 @@ export const AssignMedicine = () => {
         placeholder="Search for medicine"
       />
       <div className="assign-medicine-container">
-        <div>
-          <Button onClick={assignMedicine}> Assign Medicine</Button>
-          {/* <Button onClick={() => removeMedicine(medicine.id)}>Remove</Button> */}
-        </div>
-        <div>
-          {medicineList.length === 0 ? (
-            <p>No Medicine Found</p>
-          ) : (
-            <ul>
-              {medicineList.map((medicine) => (
-                <li key={medicine.id}>{medicine.nameFormStrength}</li>
-              ))}
-            </ul>
-          )}
-        </div>
+        {medicineList.length === 0 ? (
+          <p>No Medicine Found</p>
+        ) : (
+          <div className="medicine-list">
+            {medicineList.map((medicine) => (
+              <div key={medicine.id} className="medicine-item">
+                <p>{medicine.nameFormStrength}</p>
+                <div>
+                  <Button onClick={() => assignMedicine(medicine.id)}>
+                    Assign Medicine
+                  </Button>
+                  <Button onClick={() => removeMedicine(medicine.id)}>
+                    Remove
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

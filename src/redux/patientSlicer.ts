@@ -23,6 +23,17 @@ function generatePatients(n: number) {
 
   return result;
 }
+
+// const patients = {
+//   "75b9858f-09a2-4be9-afad-9a5b645f4cf9": {
+//     birthday:
+//       "Wed Mar 09 2022 13:01:54 GMT+0100 (Central European Standard Time)",
+//     email: "Issac58@hotmail.com",
+//     id: "75b9858f-09a2-4be9-afad-9a5b645f4cf9",
+//     name: "Michael Price II",
+//     phoneNumber: "71566389",
+//   },
+// };
 //adds 200 patients
 const { ids, patients } = generatePatients(8);
 

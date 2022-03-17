@@ -7,6 +7,7 @@ export interface PatientTypes {
   medicineList?: Medicine[];
 }
 
+
 export interface InitialState {
   patient: {
     patients: Record<string, PatientTypes>;

@@ -10,7 +10,7 @@ import { Button } from "../Button/Button";
 
 const AddPatient = () => {
   const { patients } = useSelector((state: InitialState) => state.patient);
-  let { patientId } = useParams();
+
   let nameInputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const emailInputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const birthdayInputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -19,6 +19,7 @@ const AddPatient = () => {
 
   const dispatch = useDispatch();
   const history = useNavigate();
+    let { patientId } = useParams();
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 

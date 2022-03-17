@@ -9,6 +9,7 @@ import AddPatient from "./components/AddPatient/AddPatient";
 import PatientList from "./components/PatientList/PatientList";
 import Navbar from "./components/Navbar/Navbar";
 import { AssignMedicine } from "./components/AssignMedicine/AssignMedicine";
+import FormContainer from "./components/Form/FormContainer";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<PatientList />} />
           <Route path="/add" element={<AddPatient />} />
-          <Route path="/edit/:patientId" element={<AddPatient />} />
+          <Route path="/edit/:patientId" element={<FormContainer />} />
+          {/* <Route path="/edit/:patientId" element={<AddPatient />} /> */}
           <Route path="/Assign/:patientId" element={<AssignMedicine />} />
 
           <Route
