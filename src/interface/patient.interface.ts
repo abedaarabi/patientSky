@@ -7,7 +7,6 @@ export interface PatientTypes {
   medicineList?: Medicine[];
 }
 
-
 export interface InitialState {
   patient: {
     patients: Record<string, PatientTypes>;
@@ -30,7 +29,7 @@ export interface MedicineInitialState {
   medicine: {
     medicineTypes: Medicine[];
     searchKey: string;
-    assignedMedicine: {};
+    assignedMedicine: Record<string, string[]>;
   };
 }
 

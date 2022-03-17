@@ -19,20 +19,23 @@ const medicineSlice = createSlice({
       state.searchKey = payload;
     },
 
-    addMedicine: (state, { payload }) => {
-      console.log(payload);
-
-      const newPatientRecord = {
-        [payload.patientId]: [payload.medicineId],
-      };
-
-      state.assignedMedicine = {
-        ...state.assignedMedicine,
-        ...newPatientRecord,
-      };
-      console.log(state.assignedMedicine);
+    addMedicine: (
+      state,
+      { payload }: { payload: { patientId: string; medicineId: string } }
+    ) => {
+      const value = state.assignedMedicine[payload.patientId];
+      if (value) {
+        value.push(payload.medicineId);
+      } else {
+        state.assignedMedicine[payload.patientId] = [payload.medicineId];
+      }
     },
-    removeMedicine: (state, { payload }) => {},
+    removeMedicine: (state, { payload }) => {
+      const value = state.assignedMedicine[payload.patientId];
+      state.assignedMedicine[payload.patientId] = value.filter(
+        (anId) => anId !== payload.medicineId
+      );
+    },
   },
 });
 

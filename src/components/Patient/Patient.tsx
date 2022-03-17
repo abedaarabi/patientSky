@@ -13,22 +13,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { deletePatient } from "../../redux/patientSlicer";
 
 import { Button } from "../Button/Button";
-const Patient = ({
-  name,
-  email,
-  birthday,
-  phoneNumber,
-  id,
-  medicineList,
-}: PatientTypes) => {
+const Patient = ({ name, email, birthday, phoneNumber, id }: PatientTypes) => {
   const [isHide, setIsHide] = React.useState(false);
   const arrow = isHide ? faAngleDown : faAngleRight;
   const dispatch = useDispatch();
 
-  const { assignedMedicine, medicineTypes } = useSelector(
-    ({ medicine }: MedicineInitialState) => medicine
-  );
-  // console.log(assignedMedicine, medicineTypes, id);
+  const patientMedicines = useSelector(({ medicine }: MedicineInitialState) => {
+    const { assignedMedicine, medicineTypes } = medicine;
+
+    const ids = assignedMedicine[id as string] || [];
+    return ids.map((anId) =>
+      medicineTypes.find((medicine) => medicine.id === anId)
+    );
+  });
 
   return (
     <div className="patient-container">
@@ -56,9 +53,9 @@ const Patient = ({
       <div>
         {isHide && (
           <ul>
-            <li>product 1 </li>
-            <li>product 2 </li>
-            <li>product 3 </li>
+            {patientMedicines.map((medicine) => (
+              <li key={medicine?.id}>{medicine?.nameFormStrength} </li>
+            ))}
           </ul>
         )}
       </div>
@@ -66,7 +63,7 @@ const Patient = ({
         <Button link={`/edit/${id}`}>Edit</Button>
 
         <Button onClick={() => dispatch(deletePatient(id))}>Delete</Button>
-        <Button link={`/Assign/${id}`}>Assign Medicine</Button>
+        <Button link={`/Assign/${id}`}>Medicines</Button>
       </div>
     </div>
   );

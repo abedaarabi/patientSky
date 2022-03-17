@@ -18,8 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<PatientList />} />
           <Route path="/add" element={<AddPatient />} />
-          <Route path="/edit/:patientId" element={<FormContainer />} />
-          {/* <Route path="/edit/:patientId" element={<AddPatient />} /> */}
+        
+          <Route path="/edit/:patientId" element={<AddPatient />} />
           <Route path="/Assign/:patientId" element={<AssignMedicine />} />
 
           <Route

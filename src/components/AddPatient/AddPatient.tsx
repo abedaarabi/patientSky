@@ -19,7 +19,7 @@ const AddPatient = () => {
 
   const dispatch = useDispatch();
   const history = useNavigate();
-    let { patientId } = useParams();
+  let { patientId } = useParams();
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -36,6 +36,7 @@ const AddPatient = () => {
       phoneNumber,
       id: PId,
     };
+    console.log(inputValues);
 
     if (patientId) {
       dispatch(editPatient(inputValues));
@@ -47,6 +48,7 @@ const AddPatient = () => {
   };
 
   const result = patientId ? patients[patientId] : undefined;
+  console.log(result);
 
   const btnName = patientId ? "Save" : "Add Patient";
   return (

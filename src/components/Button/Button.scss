@@ -1,5 +1,9 @@
 @import "././global.scss";
 .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   text-decoration: none;
   cursor: pointer;
   font: inherit;
@@ -12,6 +16,7 @@
   text-align: center;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
   width: 10rem;
+
   &:hover,
   &:active {
     background-color: #02afa1;

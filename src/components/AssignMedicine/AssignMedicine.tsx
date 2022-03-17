@@ -2,12 +2,25 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { MedicineInitialState } from "../../interface/patient.interface";
-import { addMedicine, filterMedicine } from "../../redux/medicineSlicer";
+import {
+  addMedicine,
+  removeMedicine,
+  filterMedicine,
+} from "../../redux/medicineSlicer";
 import { Button } from "../Button/Button";
 import Navbar from "../Navbar/Navbar";
 import "./AssignMedicine.scss";
 export const AssignMedicine = () => {
   let { patientId } = useParams();
+
+  const assignedMedicines = useSelector(
+    ({ medicine }: MedicineInitialState) => {
+      const filterMedicineResult =
+        medicine.assignedMedicine[patientId as string];
+
+      return filterMedicineResult || [];
+    }
+  );
 
   const medicineList = useSelector(({ medicine }: MedicineInitialState) => {
     const filterMedicineResult = medicine.medicineTypes.filter((aMedicine) => {
@@ -26,16 +39,11 @@ export const AssignMedicine = () => {
     dispatch(filterMedicine(value));
   };
 
-  const assignMedicine = (medicineId: string) => {
-    // const resultIds = medicineList.map((id) => id.id);
-
-    dispatch(addMedicine({ patientId, medicineId }));
-  };
-
-  const removeMedicine = (medicineId: string) => {
-    console.log(medicineId);
-
-    // dispatch(removeMedicine(medicineId));
+  const toggleMedicine = (medicineId: string) => {
+    if (!patientId) return;
+    const isAssigned = assignedMedicines.includes(medicineId);
+    const func = isAssigned ? removeMedicine : addMedicine;
+    dispatch(func({ patientId, medicineId }));
   };
 
   return (
@@ -51,19 +59,20 @@ export const AssignMedicine = () => {
           <p>No Medicine Found</p>
         ) : (
           <div className="medicine-list">
-            {medicineList.map((medicine) => (
-              <div key={medicine.id} className="medicine-item">
-                <p>{medicine.nameFormStrength}</p>
-                <div className="btn-medicine-item">
-                  <Button onClick={() => assignMedicine(medicine.id)}>
-                    Assign Medicine
-                  </Button>
-                  <Button onClick={() => removeMedicine(medicine.id)}>
-                    Remove
-                  </Button>
+            {medicineList.map((medicine) => {
+              const isAssigned = assignedMedicines.includes(medicine.id);
+
+              return (
+                <div key={medicine.id} className="medicine-item">
+                  <p>{medicine.nameFormStrength}</p>
+                  <div className="btn-medicine-item">
+                    <Button onClick={() => toggleMedicine(medicine.id)}>
+                      {isAssigned ? "Remove Medicine" : " Assign Medicine"}
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
