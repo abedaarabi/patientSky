@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./AddPatient.scss";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,19 +10,23 @@ import { Button } from "../Button/Button";
 
 const AddPatient = () => {
   const { patients } = useSelector((state: InitialState) => state.patient);
-  let { patientId } = useParams();
 
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [birthday, setBirthday] = React.useState("");
-  const [phoneNumber, setPhoneNumber] = React.useState("");
+  const nameInputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const emailInputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const birthdayInputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const phoneNumberInputRef =
+    useRef() as React.MutableRefObject<HTMLInputElement>;
 
   const dispatch = useDispatch();
   const history = useNavigate();
-
+  let { patientId } = useParams();
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
+    let name = nameInputRef.current.value;
+    const email = emailInputRef.current.value;
+    const birthday = birthdayInputRef.current.value;
+    const phoneNumber = phoneNumberInputRef.current.value;
     const PId = patientId || uuidv4();
 
     const inputValues = {
@@ -34,12 +38,14 @@ const AddPatient = () => {
     };
 
     const func = patientId ? editPatient : addPatient;
+
     dispatch(func(inputValues));
 
     history("/");
   };
 
   const result = patientId ? patients[patientId] : undefined;
+  console.log(result);
 
   const btnName = patientId ? "Save" : "Add Patient";
   return (
@@ -52,7 +58,7 @@ const AddPatient = () => {
           id="name"
           name="name"
           placeholder="Name"
-          onChange={(e) => setName(e.target.value)}
+          ref={nameInputRef}
           defaultValue={result?.name || ""}
         />
         <label htmlFor="email">Email: </label>
@@ -61,7 +67,7 @@ const AddPatient = () => {
           required
           id="email"
           placeholder="email"
-          onChange={(e) => setEmail(e.target.value)}
+          ref={emailInputRef}
           defaultValue={result?.email || ""}
         />
         <label htmlFor="birthday">Birthday:</label>
@@ -69,7 +75,7 @@ const AddPatient = () => {
           type="date"
           id="birthday"
           placeholder="birthday"
-          onChange={(e) => setBirthday(e.target.value)}
+          ref={birthdayInputRef}
           defaultValue={result?.birthday || ""}
         />
         <label htmlFor="phone-number.">Phone Number: </label>
@@ -78,7 +84,7 @@ const AddPatient = () => {
           required
           id="phone-number"
           placeholder="Phone Number"
-          onChange={(e) => setPhoneNumber(e.target.value)}
+          ref={phoneNumberInputRef}
           defaultValue={result?.phoneNumber || ""}
         />
         <Button type="submit">{btnName}</Button>

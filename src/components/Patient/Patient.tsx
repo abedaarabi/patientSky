@@ -48,7 +48,7 @@ const Patient = ({ name, email, birthday, phoneNumber, id }: PatientTypes) => {
                 className="arrow"
                 icon={arrow}
                 size="lg"
-                color={"red"}
+                color={"#bc4555"}
                 onClick={() => {
                   setIsHide(!isHide);
                 }}
