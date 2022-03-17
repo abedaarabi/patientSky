@@ -2,10 +2,7 @@ import React from "react";
 import Patient from "../Patient/Patient";
 import "./PatientList.scss";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  InitialState,
-  MedicineInitialState,
-} from "../../interface/patient.interface";
+import { InitialState } from "../../interface/patient.interface";
 import Navbar from "../Navbar/Navbar";
 import { filterPatients } from "../../redux/patientSlicer";
 const PatientList = () => {
@@ -20,29 +17,6 @@ const PatientList = () => {
     });
     return filterPatientsResult;
   });
-
-  const { assignedMedicine, medicineTypes } = useSelector(
-    ({ medicine }: MedicineInitialState) => medicine
-  );
-  // console.log(assignedMedicine, medicineTypes);
-
-  // const re = patients.map((p) => {
-  //   if (medicineList[p.id]) {
-  //     return medicineList[p.id].map((mId: any) => {
-  //       return medicineTypes.find((mType: any) => {
-  //         if (mType.id === mId) {
-  //           const result = { patient: p, medicine: mType };
-  //           // console.log(result);
-  //           //weird return [medicine]
-  //           return result;
-  //         }
-  //       });
-  //     });
-  //   } else {
-  //     return p;
-  //   }
-  // });
-  // console.log(re);
 
   const dispatch = useDispatch();
 
@@ -65,7 +39,6 @@ const PatientList = () => {
         ) : (
           patients.map((patient) => (
             <Patient
-              medicineList={[{ id: "hhjhjddsf", nameFormStrength: "abc" }]}
               key={patient.id}
               name={patient.name}
               birthday={patient.birthday}

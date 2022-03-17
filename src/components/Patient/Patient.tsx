@@ -38,32 +38,39 @@ const Patient = ({ name, email, birthday, phoneNumber, id }: PatientTypes) => {
           <li> Birthday:{phoneNumber}</li>
         </ul>
       </div>
-      <div className="assigned-medicine">
-        <p>Assigned Medicine</p>
-        <FontAwesomeIcon
-          className="arrow"
-          icon={arrow}
-          size="lg"
-          color={"red"}
-          onClick={() => {
-            setIsHide(!isHide);
-          }}
-        />
-      </div>
-      <div>
-        {isHide && (
-          <ul>
-            {patientMedicines.map((medicine) => (
-              <li key={medicine?.id}>{medicine?.nameFormStrength} </li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <div className="patient-btn-container">
-        <Button link={`/edit/${id}`}>Edit</Button>
 
-        <Button onClick={() => dispatch(deletePatient(id))}>Delete</Button>
-        <Button link={`/Assign/${id}`}>Medicines</Button>
+      <div>
+        {patientMedicines.length === 0 ? null : (
+          <div>
+            <div className="assigned-medicine">
+              <p>Assigned Medicine</p>
+              <FontAwesomeIcon
+                className="arrow"
+                icon={arrow}
+                size="lg"
+                color={"red"}
+                onClick={() => {
+                  setIsHide(!isHide);
+                }}
+              />
+            </div>
+            <div>
+              {isHide && (
+                <ul>
+                  {patientMedicines.map((medicine) => (
+                    <li key={medicine?.id}>{medicine?.nameFormStrength} </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        )}
+        <div className="patient-btn-container">
+          <Button link={`/edit/${id}`}>Edit</Button>
+
+          <Button onClick={() => dispatch(deletePatient(id))}>Delete</Button>
+          <Button link={`/Assign/${id}`}>Medicines</Button>
+        </div>
       </div>
     </div>
   );
