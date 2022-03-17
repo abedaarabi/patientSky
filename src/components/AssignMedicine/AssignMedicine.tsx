@@ -54,7 +54,7 @@ export const AssignMedicine = () => {
             {medicineList.map((medicine) => (
               <div key={medicine.id} className="medicine-item">
                 <p>{medicine.nameFormStrength}</p>
-                <div>
+                <div className="btn-medicine-item">
                   <Button onClick={() => assignMedicine(medicine.id)}>
                     Assign Medicine
                   </Button>
