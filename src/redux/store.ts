@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import medicineSlice from "./medicineSlicer";
 import patientSlice from "./patientSlicer";
 
-console.log(medicineSlice);
+
 
 export const store = configureStore({
   reducer: {

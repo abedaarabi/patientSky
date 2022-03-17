@@ -2,11 +2,11 @@
 .patient-container {
   width: 25%;
 
-  color: aliceblue;
+  color: #2b061e;
   padding: 2rem;
   margin: 2rem auto;
   border-radius: 5px;
-  background-color: $blueColor;
+  background-color: #fbbfca;
   opacity: 0.8;
   @include mobile {
     width: 80%;

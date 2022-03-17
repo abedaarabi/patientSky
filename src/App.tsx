@@ -7,9 +7,9 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddPatient from "./components/AddPatient/AddPatient";
 import PatientList from "./components/PatientList/PatientList";
-import Navbar from "./components/Navbar/Navbar";
+
 import { AssignMedicine } from "./components/AssignMedicine/AssignMedicine";
-import FormContainer from "./components/Form/FormContainer";
+
 
 function App() {
   return (

@@ -18,10 +18,14 @@
       align-items: center;
     }
     .medicine-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       margin: 1rem;
-      padding: 1rem;
-      color: aliceblue;
-      background-color: $blueColor;
+      padding: 1.5rem;
+      color: #2b061e;
+      background-color: #fbbfca;
       opacity: 0.8;
       border-radius: 5px;
     }
