@@ -45,7 +45,6 @@ const AddPatient = () => {
   };
 
   const result = patientId ? patients[patientId] : undefined;
-  console.log(result);
 
   const btnName = patientId ? "Save" : "Add Patient";
   return (
