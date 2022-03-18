@@ -24,7 +24,6 @@ function generatePatients(n: number) {
       id: uuidv4(),
     };
 
-
     result.patients[obj.id] = obj;
     result.ids.push(obj.id);
   }
