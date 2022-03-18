@@ -33,6 +33,8 @@ const PatientList = () => {
         link="/add"
         placeholder="Search for patient"
       />
+
+      <h3>{`Number of Patients: ${patients.length}`}</h3>
       <div className="patient-list-container">
         {patients.length === 0 ? (
           <p className="noData-msg">no patients data :/</p>

@@ -1,4 +1,9 @@
 @import "././global.scss";
+h3 {
+  text-align: center;
+  margin-top: 0.3rem;
+  color: #2b061e;
+}
 .patient-list-container {
   display: flex;
   flex-direction: row;
