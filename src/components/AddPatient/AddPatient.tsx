@@ -72,7 +72,6 @@ const AddPatient = () => {
           onChange={(e) =>
             setInputValues({ ...inputValues, birthday: e.target.value })
           }
-          defaultValue={result?.birthday || ""}
         />
         <label htmlFor="phone-number.">Phone Number: </label>
         <input
@@ -84,7 +83,6 @@ const AddPatient = () => {
           onChange={(e) =>
             setInputValues({ ...inputValues, phoneNumber: e.target.value })
           }
-          defaultValue={result?.phoneNumber || ""}
         />
         <Button type="submit">{btnName}</Button>
       </form>

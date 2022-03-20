@@ -43,6 +43,7 @@ export interface NavbarInterface {
   btnTitle: string;
   link?: string;
   placeholder?: string;
+  value?: string;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   type?: string;
 }

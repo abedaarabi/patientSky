@@ -18,6 +18,11 @@ const PatientList = () => {
     return filterPatientsResult;
   });
 
+  const keySearch = useSelector(
+    (state: InitialState) => state.patient.searchKey
+  );
+  console.log(keySearch);
+
   const dispatch = useDispatch();
 
   const handelChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -32,6 +37,7 @@ const PatientList = () => {
         btnTitle="Add New Patient"
         link="/add"
         placeholder="Search for patient"
+        value={keySearch}
       />
 
       <h3>{`Number of Patients: ${patients.length}`}</h3>
