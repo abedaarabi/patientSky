@@ -21,7 +21,6 @@ const PatientList = () => {
   const keySearch = useSelector(
     (state: InitialState) => state.patient.searchKey
   );
-  console.log(keySearch);
 
   const dispatch = useDispatch();
 

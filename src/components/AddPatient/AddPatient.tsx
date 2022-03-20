@@ -26,8 +26,6 @@ const AddPatient = () => {
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log(inputValues);
-
     const func = patientId ? editPatient : addPatient;
 
     dispatch(func(inputValues));
