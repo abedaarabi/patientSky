@@ -10,15 +10,20 @@ const PatientList = () => {
     const filterPatientsResult = Array.from(
       patient.ids,
       (aPatientKey) => patient.patients[aPatientKey]
-    ).filter((aPatient) => {
+    );
+
+    if (!patient.searchKey) {
+      return filterPatientsResult;
+    }
+
+    return filterPatientsResult.filter((aPatient) => {
       return aPatient.name
         .toLowerCase()
         .includes(patient.searchKey.toLowerCase());
     });
-    return filterPatientsResult;
   });
 
-  const keySearch = useSelector(
+  const searchKey = useSelector(
     (state: InitialState) => state.patient.searchKey
   );
 
@@ -36,7 +41,7 @@ const PatientList = () => {
         btnTitle="Add New Patient"
         link="/add"
         placeholder="Search for patient"
-        value={keySearch}
+        value={searchKey}
       />
 
       <h3>{`Number of Patients: ${patients.length}`}</h3>

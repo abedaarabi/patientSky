@@ -33,8 +33,6 @@ const AddPatient = () => {
     history("/");
   };
 
-  const btnName = patientId ? "Save" : "Add Patient";
-
   return (
     <div className="form-container">
       <h3>Add New Patient:</h3>
@@ -82,7 +80,7 @@ const AddPatient = () => {
             setInputValues({ ...inputValues, phoneNumber: e.target.value })
           }
         />
-        <Button type="submit">{btnName}</Button>
+        <Button type="submit">{patientId ? "Save" : "Add Patient"}</Button>
       </form>
       <div className="btn-container">
         <Button link="/">Cancel</Button>

@@ -12,6 +12,7 @@ import Navbar from "../Navbar/Navbar";
 import "./AssignMedicine.scss";
 export const AssignMedicine = () => {
   let { patientId } = useParams();
+  const dispatch = useDispatch();
 
   const assignedMedicines = useSelector(
     ({ medicine }: MedicineInitialState) => {
@@ -23,16 +24,21 @@ export const AssignMedicine = () => {
   );
 
   const medicineList = useSelector(({ medicine }: MedicineInitialState) => {
-    const filterMedicineResult = medicine.medicineTypes.filter((aMedicine) => {
+    const { medicineTypes } = medicine;
+    if (!medicine.searchKey) {
+      return medicineTypes;
+    }
+
+    return medicineTypes.filter((aMedicine) => {
       return aMedicine.nameFormStrength
         .toLowerCase()
         .includes(medicine.searchKey.toLowerCase());
     });
-
-    return filterMedicineResult;
   });
 
-  const dispatch = useDispatch();
+  const searchKey = useSelector(
+    ({ medicine }: MedicineInitialState) => medicine.searchKey
+  );
 
   const handelChange = (e: React.FormEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
@@ -53,6 +59,7 @@ export const AssignMedicine = () => {
         btnTitle="Home Page"
         link="/"
         placeholder="Search for medicine"
+        value={searchKey}
       />
       <div className="assign-medicine-container">
         {medicineList.length === 0 ? (
