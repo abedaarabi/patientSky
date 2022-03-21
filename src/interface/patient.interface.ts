@@ -38,6 +38,7 @@ export interface ButtonInterface {
   link?: string | any;
   onClick?: () => void;
   type?: string;
+  style?: Record<string, string>;
 }
 export interface NavbarInterface {
   btnTitle: string;

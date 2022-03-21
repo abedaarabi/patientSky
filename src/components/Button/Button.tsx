@@ -2,7 +2,13 @@ import { Link } from "react-router-dom";
 import { ButtonInterface } from "../../interface/patient.interface";
 import "./Button.scss";
 
-export const Button = ({ children, link, onClick, type }: ButtonInterface) => {
+export const Button = ({
+  children,
+  link,
+  onClick,
+  type,
+  style,
+}: ButtonInterface) => {
   if (link) {
     return (
       <Link to={link} className={"btn"}>
@@ -11,7 +17,7 @@ export const Button = ({ children, link, onClick, type }: ButtonInterface) => {
     );
   }
   return (
-    <button className="btn" onClick={onClick}>
+    <button style={style} className="btn" onClick={onClick}>
       {children}
     </button>
   );

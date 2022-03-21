@@ -66,7 +66,10 @@ export const AssignMedicine = () => {
                 <div key={medicine.id} className="medicine-item">
                   <p>{medicine.nameFormStrength}</p>
                   <div className="btn-medicine-item">
-                    <Button onClick={() => toggleMedicine(medicine.id)}>
+                    <Button
+                      style={isAssigned ? { background: "#9e2a2b" } : {}}
+                      onClick={() => toggleMedicine(medicine.id)}
+                    >
                       {isAssigned ? "Remove Medicine" : " Assign Medicine"}
                     </Button>
                   </div>
