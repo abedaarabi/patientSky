@@ -49,16 +49,18 @@ const PatientList = () => {
         {patients.length === 0 ? (
           <p className="noData-msg">no patients data :/</p>
         ) : (
-          patients.map((patient) => (
-            <Patient
-              key={patient.id}
-              name={patient.name}
-              birthday={patient.birthday}
-              email={patient.email}
-              phoneNumber={patient.phoneNumber}
-              id={patient.id}
-            />
-          ))
+          patients
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((patient) => (
+              <Patient
+                key={patient.id}
+                name={patient.name}
+                birthday={patient.birthday}
+                email={patient.email}
+                phoneNumber={patient.phoneNumber}
+                id={patient.id}
+              />
+            ))
         )}
       </div>
     </>
