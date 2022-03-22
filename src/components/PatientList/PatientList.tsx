@@ -34,6 +34,8 @@ const PatientList = () => {
     dispatch(filterPatients(value));
   };
 
+  //to unmute the original array
+  const sortedPatients = [...patients];
   return (
     <>
       <Navbar
@@ -49,7 +51,7 @@ const PatientList = () => {
         {patients.length === 0 ? (
           <p className="noData-msg">no patients data :/</p>
         ) : (
-          patients
+          sortedPatients
             .sort((a, b) => a.name.localeCompare(b.name))
             .map((patient) => (
               <Patient
