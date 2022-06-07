@@ -66,6 +66,7 @@ const patientSlice = createSlice({
   },
 });
 
+
 export const { addPatient, deletePatient, filterPatients, editPatient } =
   patientSlice.actions;
 

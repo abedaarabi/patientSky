@@ -40,6 +40,7 @@ export interface ButtonInterface {
   type?: string;
   style?: Record<string, string>;
 }
+
 export interface NavbarInterface {
   btnTitle: string;
   link?: string;
